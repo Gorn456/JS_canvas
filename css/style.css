@@ -130,7 +130,7 @@ body.active {
 .stat-center {
   display: flex;
   justify-content: space-between;
-  transform: translate(-85%, 0%);
+  transform: translate(-55%, 0%);
 }
 
 .stat-text {
@@ -171,10 +171,11 @@ body.active {
 }
 
 .right-upper-image {
-  margin-right: 4vh;
+  margin-right: 6vh;
   margin-top: 0.6vh;
   margin-bottom: 0.6vh;
   right: 0;
+
 }
 
 .button {
@@ -276,6 +277,7 @@ body.active {
   background-size: cover;
   background-repeat: no-repeat;
   box-shadow: 0px 0px 3vh rgba(236, 218, 90, 0.6); /* Płynny cień */
+  z-index: 1000;
 }
 
 #characterCard.active {
@@ -288,6 +290,11 @@ body.active {
 
 .link {
   cursor: url("../img/cursor_outline_yellow.png"), pointer;
+}
+
+#currentTime {
+  align-self: center;
+  font-size: 3vh;
 }
 
 

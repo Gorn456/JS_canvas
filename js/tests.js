@@ -32,6 +32,18 @@ const Circle = {
   radius: 100
 }
 
+function realTime() {
+  let currentTime = new Date()
+  let hours = currentTime.getHours()
+  let minutes = currentTime.getMinutes()
+  let seconds = currentTime.getSeconds()
+
+  minutes = (minutes < 10 ? "0" : "") + minutes
+  seconds = (minutes < 10 ? "0" : "") + seconds
+  let formattedTime = `${hours}:${minutes}:${seconds}`
+  document.getElementById("currentTime").innerHTML = formattedTime
+}
+
 document.getElementById("b1").addEventListener("click", (event) => {
   let lowerMenu = document.getElementById("characterCard")
   lowerMenu.classList.toggle('active')
@@ -39,11 +51,13 @@ document.getElementById("b1").addEventListener("click", (event) => {
     cardDisplayed = true
     // document.documentElement.style.setProperty("--scroll-bar-size", 0) -> nie działa :(
     setTimeout(() => {
+      console.log("Dupa")
       document.documentElement.style.setProperty("--scroll-bar-size", 0)}, 0.000001)
   }
   else {
     cardDisplayed = false
     setTimeout(() => {
+      console.log("Dupa2")
       document.documentElement.style.setProperty("--scroll-bar-size", "1.5vh")}, 0.000001)
   }
 
@@ -54,15 +68,16 @@ window.addEventListener("mousemove", (event) => {
 })
 
 window.addEventListener("click", (event) => {
-  if ((event.pageX - Circle.x) ** 2 + (event.pageY - Circle.y) ** 2 < Circle.radius ** 2 && !menuDisplayed) {
+  if ((event.pageX - Circle.x) ** 2 + (event.pageY - Circle.y) ** 2 < Circle.radius ** 2 && !menuDisplayed && !cardDisplayed) {
+    console.log("Dupa2")
     menuDisplayed = true
     document.getElementById("sideMenu").style.right = "0"
     document.documentElement.style.setProperty("--scroll-bar-size", 0)
   }
-  else if ((window.innerWidth * 0.695) - event.clientX > 0
+  else if (((window.innerWidth * 0.695) - event.clientX > 0
     || (window.innerHeight * 0.04) - event.clientY > 0
-    || (window.innerHeight * 0.945) - event.clientY < 0
-    && menuDisplayed) {
+    || (window.innerHeight * 0.945) - event.clientY < 0)
+    && menuDisplayed && !cardDisplayed) {
     menuDisplayed = false
     document.getElementById("sideMenu").style.right = "-50vw"
     document.documentElement.style.setProperty("--scroll-bar-size", "1.5vh")
@@ -103,7 +118,7 @@ img.src = "../img/map.jpg"
 
 function show(x, y) {
   if ((x - Circle.x) ** 2 + (y - Circle.y) ** 2 < Circle.radius ** 2) {
-    if (!elementDisplayed) {
+    if (!elementDisplayed && !cardDisplayed) {
       elementDisplayed = true
       c.beginPath()
       c.arc(Circle.x, Circle.y, Circle.radius, 0, Math.PI * 2, false)
@@ -120,4 +135,6 @@ function show(x, y) {
     c.drawImage(img, 0, 0, canvas.width, canvas.height)
   }
 }
+
+setInterval(realTime, 1000)
 
