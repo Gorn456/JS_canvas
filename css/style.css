@@ -11,10 +11,21 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+@font-face {
+  font-family: "Gothic3";
+  src: url("https://db.onlinewebfonts.com/t/db99fbbf4c15c62e5475cc3286322e4d.eot");
+  src: url("https://db.onlinewebfonts.com/t/db99fbbf4c15c62e5475cc3286322e4d.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/db99fbbf4c15c62e5475cc3286322e4d.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/db99fbbf4c15c62e5475cc3286322e4d.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/db99fbbf4c15c62e5475cc3286322e4d.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/db99fbbf4c15c62e5475cc3286322e4d.svg#Gothic3")format("svg");
+}
+
 html {
   color: #222;
   font-size: 1em;
   line-height: 1.4;
+
 }
 
 /*
@@ -23,6 +34,11 @@ html {
  *
  * Customize the background color to match your design.
  */
+:root {
+  --scroll-bar-size: 1.5vh ;
+
+}
+
 
 ::-moz-selection {
   background: #b3d4fc;
@@ -33,6 +49,30 @@ html {
   background: #b3d4fc;
   text-shadow: none;
 }
+
+::-webkit-scrollbar {
+  width: var(--scroll-bar-size); /* Szerokość paska przewijania vh - view height */
+  height: var(--scroll-bar-size);
+  background-color: #333; /* Kolor tła paska przewijania */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #666; /* Kolor kciuka */
+  border-radius: 2px; /* Zaokrąglenie kciuka */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #888; /* Kolor kciuka po najechaniu myszą */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #222; /* Kolor tła scrollbara */
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #222;
+}
+
 
 /*
  * A better looking default horizontal rule
@@ -48,12 +88,206 @@ hr {
 }
 
 canvas {
-  border: 1px solid black ;
+  /*border: 1px solid black ;*/
   background: #ffdf98;
 }
 
 body {
+  cursor: url("../img/cursor_final.png"), auto;
+  font-family: Gothic3, Arial;
+  width: 2048px;
+  height: 1536px;
   margin: 0;
+  padding: 0;
+}
+
+body.active {
+  cursor: url("../img/cursor_outline_yellow.png"), pointer;
+}
+
+#upperBar {
+  position: fixed;
+  top: 0; /* Przyklejony do góry ekranu */
+  width: 100vw; /* Szerokość elementu będzie równa szerokości ekranu */
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  background-image: url("../img/medieval-scroll.jpg");
+  background-size: cover; /* Dopasowanie obrazu do wielkości elementu */
+  background-repeat: no-repeat; /* Zapobiega powtarzaniu obrazu */
+  background-color: #333; /* Przykładowy kolor tła */
+  color: #fff; /* Przykładowy kolor tekstu */
+  /*padding: 1vh; !* Odstępy wewnątrz elementu *!*/
+  z-index: 1000; /* Poziom nakładania, aby element był zawsze na wierzchu */
+  box-shadow: 0px 0px 3vh rgba(236, 218, 90, 0.7); /* Płynny cień */
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-center {
+  display: flex;
+  justify-content: space-between;
+  transform: translate(-85%, 0%);
+}
+
+.stat-text {
+  margin: 10%;
+  font-size: 2.5vh;
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  white-space: nowrap;
+}
+
+.stat-text-left {
+  margin-left: 10%;
+  margin-right: 4%;
+  font-size: 2.5vh;
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  white-space: nowrap;
+}
+
+#coins_var {
+  margin-left: 0.5vw;
+}
+
+#date_var {
+  font-size: 3vh;
+  white-space: nowrap;
+  align-self: center;
+}
+
+.left-upper-image {
+  margin: 0.6vh;
+}
+
+.center-upper-image {
+  margin: 0.2vh;
+}
+
+.right-upper-image {
+  margin-right: 4vh;
+  margin-top: 0.6vh;
+  margin-bottom: 0.6vh;
+  right: 0;
+}
+
+.button {
+  background-image: url("../img/medieval-scroll.jpg");
+  background-size: cover; /* Dopasowanie obrazu do wielkości elementu */
+  background-repeat: no-repeat; /* Zapobiega powtarzaniu obrazu */
+  width: 10vw;
+  border-radius: 0.5vh;
+  border-width: 0.1vh;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  white-space: nowrap;
+  font-family: Gothic3;
+  font-size: 3vh;
+  margin-left: 3vh;
+  margin-right: 3vh;
+  justify-content: center;
+  align-items: center;
+  padding: 1vw;
+  cursor: url("../img/cursor_outline_yellow.png"), pointer;
+}
+
+
+
+#sideMenu {
+  width: 30vw;
+  height: 90vh;
+  position: fixed;
+  top: 0;
+  right: -50vw;
+  background-color: #333;
+  transition: right 0.3s;
+  margin: 0.5%;
+  margin-top: 2.3vw;
+  border-radius: 0.5vw;
+  background-image: url("../img/medieval-scroll.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0px 0px 3vh rgba(236, 218, 90, 0.6); /* Płynny cień */
+}
+
+#sideMenu img {
+  background-color: transparent;
+  width: 10%;
+  height: 8%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 3%;
+}
+
+#sideMenu p1 {
+  /*font-family: Gothic3;*/
+  font-weight: bold;
+  font-size: 5vh;
+  display: flex;
+  margin: 3%;
+}
+
+
+#sideMenu ul {
+  margin: 0;
+  list-style-type: none;
+  padding: 0;
+}
+
+#sideMenu ul li {
+  height: 2vw;
+  padding: 0.5vw;
+  border-bottom: 0.2vw solid #555;
+}
+
+#sideMenu ul li a {
+  font-size: 2vh;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+#characterCard {
+  width: 90vw;
+  height: 90vh;
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  background-color: #333;
+  transform: translateY(150%); /* Ukryj menu za pomocą transformacji */
+  transition: transform 0.3s ease; /* Animacja wysuwania */
+  margin: 0.5%;
+  margin-left: 5vw;
+  border-radius: 0.5vw;
+  background-image: url("../img/medieval-scroll.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0px 0px 3vh rgba(236, 218, 90, 0.6); /* Płynny cień */
+}
+
+#characterCard.active {
+  transform: translateY(0); /* Pokaż menu za pomocą transformacji */
+}
+
+#characterCard img {
+  background-color: transparent;
+}
+
+.link {
+  cursor: url("../img/cursor_outline_yellow.png"), pointer;
 }
 
 

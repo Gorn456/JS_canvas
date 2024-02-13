@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="description" content="">
@@ -25,8 +25,46 @@
 
   <!-- Add your site or application content here -->
 <!--  <p>Hello world! This is HTML5 Boilerplate.</p>-->
-  <canvas> </canvas>
-  <script src="js/example2.js"></script>
+  <div id="upperBar">
+    <div class="stat">
+      <img class="left-upper-image" src="./img/coat-of-arms-background.png" alt="coat-of-arms">
+      <span class="stat-text-left">Złote monety: <b id="coins_var">0</b></span>
+      <img class="center-upper-image" src="./img/gold-coins-bg.png" alt="gold-coins">
+      <button id="b1" class="button">Panel gracza</button>
+    </div>
+    <div class="stat-center">
+      <img class="center-upper-image" src="./img/coat-of-arms-background.png" alt="coat-of-arms">
+      <b class="stat-text">A.D.</b>
+      <span id="date_var">Luty 699</span>
+      <b class="stat-text">A.D.</b>
+      <img class="center-upper-image" src="./img/coat-of-arms-background.png" alt="coat-of-arms">
+    </div>
+    <div class="stat">
+      <span class="stat-text">Placeholder</span>
+      <img class="right-upper-image" src="./img/coat-of-arms-background.png" alt="coat-of-arms">
+    </div>
+  </div>
+
+  <nav id="sideMenu">
+    <ul>
+      <img src="./img/coat-of-arms-background.png" alt="coat-of-arms">
+      <p1>Miasto Khorinis</p1>
+      <li><a class="link" href="#">Dupa</a></li>
+      <li><a class="link" href="#">Dupa</a></li>
+      <li><a class="link" href="#">Dupa</a></li>
+      <li><a class="link" href="#">Dupa</a></li>
+    </ul>
+  </nav>
+
+  <nav id="characterCard">
+    <img src="./img/gold-coins-bg.png">
+    <img src="./img/coat-of-arms-background.png">
+<!--    <img src="./img/mapa_wiedzmina.png">-->
+  </nav>
+
+
+  <canvas></canvas>
+  <script src="js/tests.js"></script>
 
 </body>
 
