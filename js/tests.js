@@ -39,7 +39,7 @@ function realTime() {
   let seconds = currentTime.getSeconds()
 
   minutes = (minutes < 10 ? "0" : "") + minutes
-  seconds = (minutes < 10 ? "0" : "") + seconds
+  seconds = (seconds < 10 ? "0" : "") + seconds
   let formattedTime = `${hours}:${minutes}:${seconds}`
   document.getElementById("currentTime").innerHTML = formattedTime
 }
